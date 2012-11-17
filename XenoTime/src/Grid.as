@@ -2,13 +2,13 @@ package
 {
 	import org.flixel.*;
 	
-	public class Grid
+	public class Grid extends FlxTilemap
 	{
 		public function Grid()
 		{
 		}
 		
-		public function update():void
+		override public function update():void
 		{
 			
 		}

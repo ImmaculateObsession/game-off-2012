@@ -2,13 +2,13 @@ package
 {
 	import org.flixel.*;
 	
-	public class Player
+	public class Player extends FlxBasic
 	{
 		public function Player()
 		{
 		}
 		
-		public function update():void
+		override public function update():void
 		{
 			
 		}

@@ -7,5 +7,10 @@ package
 		public function Player()
 		{
 		}
+		
+		public function update():void
+		{
+			
+		}
 	}
 }

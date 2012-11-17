@@ -7,5 +7,10 @@ package
 		public function Grid()
 		{
 		}
+		
+		public function update():void
+		{
+			
+		}
 	}
 }

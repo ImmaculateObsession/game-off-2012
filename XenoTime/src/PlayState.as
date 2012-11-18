@@ -15,11 +15,10 @@ package
 			add(new FlxText((FlxG.height/2), (FlxG.width/2), 300, "Welcome to XenoTime..."));
 			grid = new Grid();
 			player = new Player();
-			var data:Array = new Array(1,1);
-			grid.loadMap(FlxTilemap.arrayToCSV(data,1), ImgTile, 30, 30, FlxTilemap.AUTO);
+			var data:Array = new Array(0, 0, 0, 0);
+			grid.loadMap(FlxTilemap.arrayToCSV(data, 2), ImgTile, 63, 63, FlxTilemap.OFF, 0, 0);
 			add(grid);
-//			var tile:FlxSprite = new FlxSprite(100, 100, ImgTile);
-//			add(tile);
+
 			
 		}
 		

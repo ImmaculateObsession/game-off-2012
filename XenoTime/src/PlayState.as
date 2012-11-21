@@ -3,13 +3,14 @@ package
 	import org.flixel.*;
 
 	public class PlayState extends FlxState
-	{
-		[Embed(source='../assets/green_apt2.png')] protected var MapTile:Class;
-		
-
+	{		
+		[Embed(source='../assets/tilemap.png')] protected var MapTile:Class;
+		protected var tile1:FlxSprite;
+		protected var tile2:FlxSprite;
 		protected var grid:Grid;
 		protected var player:Player;
 		protected var positionText:FlxText;
+		protected var hud:HUD;
 		
 		override public function create():void
 		{
@@ -17,8 +18,18 @@ package
 			FlxG.bgColor = 0xff000000;
 			add(new FlxText((FlxG.height/2), (FlxG.width/2), 300, "Welcome to XenoTime..."));
 			grid = new Grid();
-			player = new Player();			
+			player = new Player();		
+			hud = new HUD();
+			tile1 = new FlxSprite(300, 300);
+			tile1.loadGraphic(MapTile, true, false, 64, 64, false);
+			
+			tile2 = new FlxSprite(400, 300);
+			tile2.loadGraphic(MapTile, true, false, 64, 64, false);
+			tile2.frame = 1;
+			add(tile1);
+			add(tile2);
 			add(grid);
+			add(hud);
 
 			
 		}
@@ -28,11 +39,7 @@ package
 			if (FlxG.mouse.justReleased())
 			{
 				var point:FlxPoint = FlxG.mouse.getWorldPosition();
-//				trace(Math.floor(point.x/64), Math.floor(point.y/64));
-				if (point.x < 128 && point.y < 128)
-				{
-					grid.setTile(Math.floor(point.x/64), Math.floor(point.y/64), 1, true)
-				}
+				grid.changeTile(point);
 			}
 			grid.update();
 			player.update();

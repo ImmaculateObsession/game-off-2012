@@ -10,8 +10,18 @@ package
 		
 		public function Grid()
 		{
-			var data:Array = new Array(0, 0, 0, 0);
-			this.loadMap(FlxTilemap.arrayToCSV(data, 2), MapTile, TILEWIDTH, TILEHEIGHT, FlxTilemap.OFF, 0, 0);
+			var data:Array = new Array(
+				0,1,0,1,0,1,0,1,0,1,
+				2,3,2,3,2,3,2,3,2,3,
+				0,1,0,1,0,1,0,1,0,1,
+				2,3,2,3,2,3,2,3,2,3,
+				0,1,0,1,0,1,0,1,0,1,
+				2,3,2,3,2,3,2,3,2,3,
+				0,1,0,1,0,1,0,1,0,1,
+				2,3,2,3,2,3,2,3,2,3,
+				0,1,0,1,0,1,0,1,0,1,
+				2,3,2,3,2,3,2,3,2,3);
+			this.loadMap(FlxTilemap.arrayToCSV(data, 10), MapTile, TILEWIDTH, TILEHEIGHT, FlxTilemap.OFF, 0, 0);
 		}
 		
 		override public function update():void
@@ -29,19 +39,26 @@ package
 			return this.widthInTiles * this.TILEWIDTH;
 		}
 		
-		public function changeTile(point:FlxPoint):void
+		public function changeTile(point:FlxPoint, tileType:uint):void
 		{
+			if (tileType == 0)
+			{
+				return;
+			}
 			if (point.x <= this.getGridWidth() && point.y <= this.getGridHeight())
 			{
-				var tileX:uint = Math.floor(point.x/64);
-				var tileY:uint = Math.floor(point.y/64);
+				var newX:uint = point.x;
+				var newY:uint = point.y;
+				var tileX:uint = Math.floor(newX/64);
+				var tileY:uint = Math.floor(newY/64);
 				if (this.getTile(tileX, tileY) == 0)
 				{
-					this.setTile(tileX, tileY, 1, true);
+					this.setTile(tileX, tileY, tileType, true);
 				} else {
-					this.setTile(tileX, tileY, 0, true);
+					this.setTile(tileX, tileY, tileType, true);
 				}
 			}
+			return;
 		}
 	}
 }

@@ -62,7 +62,7 @@ package
 				FlxG.mouse.load(PlantTile);
 				tileType = 4;
 			}
-			if (tile2.overlapsPoint(point))
+			else if (tile2.overlapsPoint(point))
 			{
 				FlxG.mouse.load(CityTile);
 				tileType = 5;
@@ -70,6 +70,8 @@ package
 			else
 			{
 				grid.changeTile(point, tileType);
+				FlxG.mouse.load();
+				tileType = 0;
 			}
 		}
 	}

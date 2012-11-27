@@ -4,24 +4,12 @@ package
 	
 	public class Grid extends FlxTilemap
 	{
-		[Embed(source='../assets/tilemap.png')] protected var MapTile:Class;
 		public var TILEHEIGHT:uint = 64;
 		public var TILEWIDTH:uint = 64;
 		
-		public function Grid()
+		public function Grid(data:Array):void
 		{
-			var data:Array = new Array(
-				0,1,0,1,0,1,0,1,0,1,
-				2,3,2,3,2,3,2,3,2,3,
-				0,1,0,1,0,1,0,1,0,1,
-				2,3,2,3,2,3,2,3,2,3,
-				0,1,0,1,0,1,0,1,0,1,
-				2,3,2,3,2,3,2,3,2,3,
-				0,1,0,1,0,1,0,1,0,1,
-				2,3,2,3,2,3,2,3,2,3,
-				0,1,0,1,0,1,0,1,0,1,
-				2,3,2,3,2,3,2,3,2,3);
-			this.loadMap(FlxTilemap.arrayToCSV(data, 10), MapTile, TILEWIDTH, TILEHEIGHT, FlxTilemap.OFF, 0, 0);
+			this.loadMap(FlxTilemap.arrayToCSV(data, 10), PlayState.MapTile, TILEWIDTH, TILEHEIGHT, FlxTilemap.OFF, 0, 0);
 		}
 		
 		override public function update():void
@@ -51,10 +39,8 @@ package
 				var newY:uint = point.y;
 				var tileX:uint = Math.floor(newX/64);
 				var tileY:uint = Math.floor(newY/64);
-				if (this.getTile(tileX, tileY) == 0)
+				if (this.getTile(tileX, tileY) != tileType)
 				{
-					this.setTile(tileX, tileY, tileType, true);
-				} else {
 					this.setTile(tileX, tileY, tileType, true);
 				}
 			}

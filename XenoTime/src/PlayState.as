@@ -74,14 +74,9 @@ package
 			hud = new HUD();
 			
 			mouseTile = new FlxSprite();
-			mouseTile.loadGraphic(MapTile, true, true, 64, 64, false);
-			tile1 = new FlxSprite(900, 700);
-//			tile1.loadGraphic(MapTile, true, true, 64, 64, false);
-//			tile1.frame = 16;
-			tile1.loadRotatedGraphic(MapTile, 16, 16);
-//			tile1.angle = -90;
-			tile1.frame = 5;
-			
+			mouseTile.loadGraphic(MapTile, true, false, 64, 64, false);
+			tile1 = new FlxSprite();
+			tile1.loadGraphic(MapTile, true, false, 64, 64, false);
 			
 			
 			collisionGrid.setTileProperties(0, 0x1111);

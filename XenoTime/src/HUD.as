@@ -37,6 +37,8 @@ package
 			cityCorner.loadGraphic(PlayState.MapTile, true, false, 64, 64, false);
 			cityCorner.frame = 20;
 			cityQuad = new FlxSprite(700, 500);
+			cityQuad.loadGraphic(PlayState.MapTile, true, false, 64, 64, false);
+			cityQuad.frame = 22;
 			cityThree = new FlxSprite(800, 500);
 			cityThree.loadGraphic(PlayState.MapTile, true, false, 64, 64, false);
 			cityThree.frame = 21;
@@ -47,7 +49,7 @@ package
 			add(forestThree);
 			add(cityStraight);
 			add(cityCorner);
-//			add(cityQuad);
+			add(cityQuad);
 			add(cityThree);
 		}
 		
@@ -81,6 +83,10 @@ package
 			else if (cityThree.overlapsPoint(point))
 			{
 				typeClicked = 21;
+			}
+			else if (cityQuad.overlapsPoint(point))
+			{
+				typeClicked = 22;
 			}
 			return typeClicked;
 		}

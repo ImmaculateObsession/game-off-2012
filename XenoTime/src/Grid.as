@@ -1,9 +1,10 @@
 package
-{
+{	
 	import org.flixel.*;
 	
 	public class Grid extends FlxTilemap
 	{
+		protected var _actualTiles:Array;
 		public var TILEHEIGHT:uint = 64;
 		public var TILEWIDTH:uint = 64;
 		
@@ -42,9 +43,11 @@ package
 				if (this.getTile(tileX, tileY) != tileType)
 				{
 					this.setTile(tileX, tileY, tileType, true);
+					trace(this, this.getTile(tileX, tileY));
 				}
 			}
 			return;
 		}
+		
 	}
 }
